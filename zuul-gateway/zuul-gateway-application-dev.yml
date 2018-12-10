@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: zuul-gateway
+  profiles:
+    active: dev
+server:
+  port: 9001
+
+# 注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+
+##zuul路由配置:
+zuul:
+  routes:
+    # 河长通业务
+    hzt:
+      path: /hzt/**
+      serviceId: hztserver
+    # 文件服务
+    fdfs:
+      path: /fdfs/**
+      serviceId: fdfs-service
+    # 消息服务
+    mq:
+      path: /mq/**
+      serviceId: mq-service
+    # 忽略所有服务名
+  ignored-services: "*"
+  ## 关闭前缀忽略功能
+  strip-prefix: false
+
