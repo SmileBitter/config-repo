@@ -9,7 +9,7 @@ spring:
     username: yangmi  # 用户名
     password: ym # 密码
 server:
-  port: 5055
+  port: 5001
 
 # 注册中心配置
 eureka:
