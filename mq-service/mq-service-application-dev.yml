@@ -1,6 +1,12 @@
 spring:
   application:
     name: mq-service
+  ## 配置zipkin地址 以及sleuth服务抓取日志的采样百分比
+  zipkin:
+    base-url: http://localhost:9500
+  sleuth:
+    sampler:
+      probability: 1.0
 server:
   port: 8086
 eureka:

@@ -8,8 +8,14 @@ spring:
     port: 5672    # RabbitMQ的监听端口
     username: yangmi  # 用户名
     password: ym # 密码
+  ## 配置zipkin地址 以及sleuth服务抓取日志的采样百分比
+  zipkin:
+    base-url: http://localhost:9500
+  sleuth:
+    sampler:
+      probability: 1.0
 server:
-  port: 5055
+  port: 5001
 
 # 注册中心配置
 eureka:
@@ -44,3 +50,5 @@ management:
     web:
       exposure:
         include: "*"
+      health:
+        show-detail:  always
