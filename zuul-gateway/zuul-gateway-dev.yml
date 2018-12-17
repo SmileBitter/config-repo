@@ -3,11 +3,11 @@ spring:
     active: dev
   application:
     name: zuul-gateway
-  #rabbitmq:     # 现在将集成RabbitMQ作为消息服务总线处理
-   # host: 106.12.213.251   # RabbitMQ主机服务地址
-    #port: 5672    # RabbitMQ的监听端口
-    #username: yangmi  # 用户名
-   # password: ym # 密码
+  rabbitmq:     # 现在将集成RabbitMQ作为消息服务总线处理
+    host: 106.12.213.251   # RabbitMQ主机服务地址
+    port: 5672    # RabbitMQ的监听端口
+    username: yangmi  # 用户名
+    password: ym # 密码
   ## 配置zipkin地址 以及sleuth服务抓取日志的采样百分比
   zipkin:
     sender:
@@ -44,6 +44,7 @@ zuul:
   ignored-services: "*"
   ## 关闭前缀忽略功能
   strip-prefix: false
+  sensitive-headers: "*"
 
 # bus-config服务器端刷新地址 http://localhost:4001/actuator/bus-refresh
 # bus-config客户端刷新地址http://localhost:4001/actuator/refresh
