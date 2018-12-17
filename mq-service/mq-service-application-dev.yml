@@ -1,16 +1,44 @@
 spring:
+  profiles:
+    active: dev
   application:
     name: mq-service
   ## 配置zipkin地址 以及sleuth服务抓取日志的采样百分比
   zipkin:
-    sender:
-      type: web
     base-url: http://localhost:9500
+    sender:
+      type: web # 采用http通信
   sleuth:
     sampler:
       probability: 1.0
+  cloud:
+    stream:
+      rabbit: # 进行rabbit的相关绑定配置
+        bindings:
+          zyqt_hzt_input:
+            consumer:   # 进行消费端配置
+              # 如果不设置路由关键字则是广播模式
+              # 设置了路由关键字，但没设置主题则是直连模式
+              # 同时设置了路由关键字又设置了主题才是主题模式
+              bindingRoutingKey: zyqt_hzt_key # 设置一个RoutingKey信息
+      binders:  #　在此处配置要绑定的rabbitmq的服务信息；
+        zyqtHztRabbit:  # 表示定义的名称，用于于binding整合
+          type: rabbit  # 消息组件类型
+          environment:  # 设置rabbitmq的相关的环境配置
+            spring:
+              rabbitmq:
+                addresses: 106.12.213.251
+                username: yangmi
+                password: ym
+                virtual-host: /
+      bindings: # 服务的整合处理
+        zyqt_hzt_input: # 这个名字是一个通道的名称，在分析具体源代码的时候会进行说明
+          destination: zyqthzt-exchange # 表示要使用的Exchange名称定义
+          content-type: application/json  # 设置消息类型，本次为对象json，如果是文本则设置“text/plain”
+          binder: zyqtHztRabbit # 设置要绑定的消息服务的具体设置
+          group:  zyqt_hzt_group  # 进行操作的分组（消费端），实际上就是表示持久化(消费端重启，依旧可以读取被持久化的消息)
 server:
-  port: 8086
+  port: 8085
 eureka:
   client:
     serviceUrl:
