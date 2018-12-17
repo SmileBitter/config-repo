@@ -44,7 +44,8 @@ zuul:
   ignored-services: "*"
   ## 关闭前缀忽略功能
   strip-prefix: false
-  sensitive-headers: "*"
+  # 处理http请求头为空的问题
+  sensitive-headers:
 
 # bus-config服务器端刷新地址 http://localhost:4001/actuator/bus-refresh
 # bus-config客户端刷新地址http://localhost:4001/actuator/refresh
