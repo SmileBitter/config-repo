@@ -1,0 +1,40 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: fdfs-service
+  rabbitmq:     # 现在将集成RabbitMQ作为消息服务总线处理
+    host: 106.12.213.251   # RabbitMQ主机服务地址
+    port: 5672    # RabbitMQ的监听端口
+    username: yangmi  # 用户名
+    password: ym # 密码
+  ## 配置zipkin地址 以及sleuth服务抓取日志的采样百分比
+  zipkin:
+    sender:
+      type: web
+    base-url: http://localhost:9500
+  sleuth:
+    sampler:
+      probability: 1.0
+server:
+  port: 8099
+eureka:
+  client:
+    serviceUrl:
+      # 注册中心地址（集群时指定另外多个个注册中心地址）
+      defaultZone: http://localhost:7001/eureka/
+#fastdfs配置
+fdfs:
+  soTimeout: 1501
+  connectTimeout: 601
+  thumbImage:
+    width: 150
+    height: 150
+  trackerList:
+    - 106.12.213.251:22122
+  pool:
+    #从池中借出的对象的最大数目
+    maxTotal: 153
+    #获取连接时的最大等待毫秒数100
+    maxWaitMillis: 102
+#file.path.head: http://192.168.1.102:8080/
