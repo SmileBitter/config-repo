@@ -32,19 +32,22 @@ zuul:
     hzt:
       path: /hzt/**
       serviceId: hztserver
+      sensitive-headers: "*"
     # 文件服务
     fdfs:
       path: /fdfs/**
       serviceId: fdfs-service
+      sensitive-headers: "*"
     # 消息服务
     mq:
       path: /mq/**
       serviceId: mq-service
+      sensitive-headers: "*"
     # 忽略所有服务名
   ignored-services: "*"
   ## 关闭前缀忽略功能
   strip-prefix: false
-  sensitive-headers: "*"
+
 
 # bus-config服务器端刷新地址 http://localhost:4001/actuator/bus-refresh
 # bus-config客户端刷新地址http://localhost:4001/actuator/refresh
