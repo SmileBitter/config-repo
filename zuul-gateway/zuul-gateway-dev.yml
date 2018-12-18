@@ -26,6 +26,7 @@ eureka:
       defaultZone: http://localhost:7001/eureka/
 
 ##zuul路由配置:
+## 注意routes 是map结构，如果value重复会覆盖
 zuul:
   routes:
     # 河长通业务

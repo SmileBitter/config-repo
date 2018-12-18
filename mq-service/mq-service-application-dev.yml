@@ -37,8 +37,10 @@ spring:
           content-type: application/json  # 设置消息类型，本次为对象json，如果是文本则设置“text/plain”
           binder: zyqtHztRabbit # 设置要绑定的消息服务的具体设置
           group:  zyqt_hzt_group  # 进行操作的分组（消费端），实际上就是表示持久化(消费端重启，依旧可以读取被持久化的消息)
+          consumer:   # 进行消费端配置
+            bindingRoutingKey: zyqt_hzt_key # 设置一个RoutingKey信息
 server:
-  port: 8085
+  port: 8088
 eureka:
   client:
     serviceUrl:
