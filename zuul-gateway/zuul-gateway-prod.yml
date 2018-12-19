@@ -57,3 +57,7 @@ management:
         include: "*"
       health:
         show-detail:  always
+## AuthZuulFilter 忽略的url
+zuul:
+  authFilter:
+    ignoreUrl:  /login,/debug/login,
