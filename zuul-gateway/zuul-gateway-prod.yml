@@ -49,7 +49,7 @@ zuul:
   sensitive-headers:
     ## AuthZuulFilter 忽略的url
   authFilter:
-    ignoreUrl:  /login,/debug/login
+    ignoreUrl: /hzt/hezhangtong/login,/hzt/hezhangtong/debug/login
 
 # bus-config服务器端刷新地址 http://localhost:4001/actuator/bus-refresh
 # bus-config客户端刷新地址http://localhost:4001/actuator/refresh
