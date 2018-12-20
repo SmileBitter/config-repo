@@ -2,7 +2,7 @@ spring:
   http:
     encoding:
       charset: UTF-8
-      enabled: false
+      enabled: true
       force: true
   profiles:
     active: dev
