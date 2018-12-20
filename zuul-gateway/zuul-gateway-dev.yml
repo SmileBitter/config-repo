@@ -23,6 +23,8 @@ spring:
       probability: 1.0
 server:
   port: 5001
+  tomcat:
+    uri-encoding: UTF-8
 
 # 注册中心配置
 eureka:
