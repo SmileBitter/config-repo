@@ -4,6 +4,10 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+  messages:
+    encoding: UTF-8
+banner:
+  charset: UTF-8
   profiles:
     active: dev
   application:
